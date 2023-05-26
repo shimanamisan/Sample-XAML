@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace Button_Sample
+﻿namespace Button_Sample
 {
     /// <summary>
     /// ContextMenuのステータスを切り替える
@@ -10,11 +8,11 @@ namespace Button_Sample
         /// <summary>
         /// メニュー１
         /// </summary>
-        public static MenuItem MenuItemFirst { get; set; }
+        public static bool IsMenuItemFirst { get; set; }
 
         /// <summary>
         /// メニュー２
         /// </summary>
-        public static MenuItem MenuItemSecond { get; set; }
+        public static bool IsMenuItemSecond { get; set; }
     }
 }

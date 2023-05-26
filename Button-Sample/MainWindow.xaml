@@ -8,6 +8,7 @@
     Title="MainWindow"
     Width="450"
     Height="450"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +26,9 @@
         </Grid.ColumnDefinitions>
         <Button
             Margin="10,10,10,10"
-            Content="コンテキストメニュー"
+            Command="{Binding ExecuteOpenContextMenu}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
+            Content="コンテキスト&#x0a;メニュー"
             Cursor="Hand">
             <Button.ContextMenu>
                 <ContextMenu>

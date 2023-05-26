@@ -25,8 +25,8 @@ namespace Button_Sample
         {
             // RequerySuggested： コマンドを実行できるかどうかを変更する可能性のある条件が、
             //                    CommandManagerによって検出された場合に発生する
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public bool CanExecute(object parameter)
@@ -62,8 +62,8 @@ namespace Button_Sample
         {
             // RequerySuggested： コマンドを実行できるかどうかを変更する可能性のある条件が、
             //                    CommandManagerによって検出された場合に発生する
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
 
         public bool CanExecute(object parameter)

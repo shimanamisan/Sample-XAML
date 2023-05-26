@@ -1,71 +1,117 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Button_Sample
 {
+    /// <summary>
+    /// MainWindowのViewModel。ウィンドウのコンポーネントのコマンドとインタラクションを処理します。
+    /// </summary>
     public sealed class MainWindowViewModel : BindableBase
     {
+        /// <summary>
+        /// 最初のメニューアイテムの実行に関連するコマンド。
+        /// </summary>
+        public DelegateCommand<object> MenuItemExecute { get; }
 
-        public DelegateCommand<Button> IsOpenContexMenuExecute { get; }
+        /// <summary>
+        /// 二番目のメニューアイテムの実行に関連するコマンド。
+        /// </summary>
+        public DelegateCommand<object> MenuItemExecute2 { get; }
 
-        public DelegateCommand MenuItemExecute { get; }
+        /// <summary>
+        /// ボタンをクリックした際のメニューアイテムの実行に関連するコマンド。
+        /// </summary>
+        public DelegateCommand<object> ExecuteOpenContextMenu { get; }
 
-        public DelegateCommand MenuItemExecute2 { get; }
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public MainWindowViewModel()
         {
-            IsOpenContexMenuExecute = new DelegateCommand<Button>(IsOpenContexMenu);
+            MenuItemExecute = new DelegateCommand<object>(MenuItemFirst);
 
-            MenuItemExecute = new DelegateCommand(MenuItemFirst);
+            MenuItemExecute2 = new DelegateCommand<object>(MenuItemSecond);
 
-            MenuItemExecute2 = new DelegateCommand(MenuItemSecond);
-        }
+            ExecuteOpenContextMenu = new DelegateCommand<object>(OpenContextMenu);
 
-        private void MenuItemSecond()
-        {
-            MessageBox.Show("メニュー２");
-
-            /*
-                if (Status.MainMachine != null)
-                {
-                Status.MainMachine.IsChecked = true;
-                }
-
-                if (Status.SubMachine != null)
-                {
-                Status.SubMachine.IsChecked = false;
-                }
-            */
-        }
-
-        private void MenuItemFirst()
-        {
-            MessageBox.Show("メニュー１");
-
-            /*
-                if (Status.MainMachine != null)
-                {
-                Status.MainMachine.IsChecked = true;
-                }
-
-                if (Status.SubMachine != null)
-                {
-                Status.SubMachine.IsChecked = false;
-                }
-            */
         }
 
         /// <summary>
         /// メインのボタンを押したときにContextMenuを開く方法
         /// </summary>
-        /// <param name="obj"></param>
-        private void IsOpenContexMenu(Button button)
+        /// <param name="o"></param>
+        private void OpenContextMenu(object o)
         {
-            if (button?.ContextMenu != null)
+            var button = o as Button;
+
+            if (button != null)
             {
                 button.ContextMenu.PlacementTarget = button;
                 button.ContextMenu.IsOpen = true;
             }
         }
+
+        /// <summary>
+        /// 最初のメニューアイテムのコマンド実行メソッド。そのチェック状態をトグルし、メッセージボックスを表示します。
+        /// </summary>
+        /// <param name="o">コマンドを呼び出したメニューアイテムオブジェクト。</param>
+        private void MenuItemFirst(object o)
+        {
+
+            var meuItem = o as MenuItem;
+
+            if (meuItem != null)
+            {
+                if (!Status.IsMenuItemFirst)
+                {
+                    Status.IsMenuItemFirst = !Status.IsMenuItemFirst;
+                    meuItem.IsChecked = Status.IsMenuItemFirst;
+
+                    MessageBox.Show("メニュー1");
+
+                    return;
+                }
+
+                Status.IsMenuItemFirst = !Status.IsMenuItemFirst;
+                meuItem.IsChecked = Status.IsMenuItemFirst;
+
+                MessageBox.Show("メニュー1");
+
+            }
+
+        }
+
+        /// <summary>
+        /// 二番目のメニューアイテムのコマンド実行メソッド。そのチェック状態をトグルし、メッセージボックスを表示します。
+        /// </summary>
+        /// <param name="o">コマンドを呼び出したメニューアイテムオブジェクト。</param>
+        private void MenuItemSecond(object o)
+        {
+            var meuItem = o as MenuItem;
+
+            if (meuItem != null)
+            {
+
+                if (!Status.IsMenuItemSecond)
+                {
+                    Status.IsMenuItemSecond = !Status.IsMenuItemSecond;
+                    meuItem.IsChecked = Status.IsMenuItemSecond;
+
+                    MessageBox.Show("メニュー２");
+
+                    return;
+                }
+
+                Status.IsMenuItemSecond = !Status.IsMenuItemSecond;
+                meuItem.IsChecked = Status.IsMenuItemSecond;
+
+                MessageBox.Show("メニュー２");
+
+            }
+
+        }
+
     }
+
 }

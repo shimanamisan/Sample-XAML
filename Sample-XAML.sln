@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample-XAML", "Sample-XAML\Sample-XAML.csproj", "{1B60B7B3-5434-4922-8E57-86FE573D1923}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Button-Sample", "Button-Sample\Button-Sample.csproj", "{14DD86B5-A28C-406C-97FF-2394A8150587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Button-Sample", "Button-Sample\Button-Sample.csproj", "{14DD86B5-A28C-406C-97FF-2394A8150587}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B60B7B3-5434-4922-8E57-86FE573D1923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B60B7B3-5434-4922-8E57-86FE573D1923}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B60B7B3-5434-4922-8E57-86FE573D1923}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B60B7B3-5434-4922-8E57-86FE573D1923}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14DD86B5-A28C-406C-97FF-2394A8150587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14DD86B5-A28C-406C-97FF-2394A8150587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DD86B5-A28C-406C-97FF-2394A8150587}.Release|Any CPU.ActiveCfg = Release|Any CPU
