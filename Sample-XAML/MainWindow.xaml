@@ -1,0 +1,78 @@
+﻿<Window
+    x:Class="Sample_XAML.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sample_XAML"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="450"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid x:Name="grid1">
+        <!--<StackPanel>
+        <Button Content="Button"/>
+        </StackPanel>-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button
+            x:Name="hamburgerButton"
+            Height="30"
+            Margin="5,5,5,5"
+            VerticalAlignment="Top"
+            Click="HamburgerButton_Click"
+            Content="&#xE700;"
+            Cursor="Hand"
+            FontFamily="Segoe MDL2 Assets"
+            FontSize="20" />
+        <TextBlock
+            Grid.Column="1"
+            Margin="10"
+            VerticalAlignment="Center"
+            Text="ハンバーガーメニュー" />
+
+        <Grid
+            x:Name="menuGrid"
+            Width="250"
+            Margin="0,0,0,0"
+            Background="#f5f5f5"
+            Visibility="Collapsed">
+            <Grid.RenderTransform>
+                <TranslateTransform x:Name="menuTranslateTransform" X="-250" />
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="163*" />
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Row="0"
+                Margin="5"
+                Click="HamburgerButton_Click"
+                Content="閉じる"
+                Cursor="Hand" />
+
+            <Button
+                Grid.Row="1"
+                Margin="5"
+                Content="メニュー項目1" />
+
+            <Button
+                Grid.Row="2"
+                Margin="5"
+                Content="メニュー項目2" />
+
+            <Button
+                Grid.Row="3"
+                Margin="5"
+                Content="メニュー項目3" />
+
+        </Grid>
+    </Grid>
+</Window>
