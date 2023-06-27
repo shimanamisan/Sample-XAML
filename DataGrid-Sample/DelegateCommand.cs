@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace ComboBox_Sample
+namespace DataGrid_Sample
 {
     /// <summary>
     /// 任意の型を受け取るDelegateCommandクラス
@@ -9,9 +9,7 @@ namespace ComboBox_Sample
     /// <typeparam name="T"></typeparam>
     public class DelegateCommand<T> : ICommand
     {
-        // 実行するアクションを保持する変数
         private readonly Action<T> _execute;
-        // コマンドの実行可否を判定する関数を保持する
         private readonly Func<bool> _canExecute;
 
         public DelegateCommand(Action<T> execute) : this(execute, () => true)
