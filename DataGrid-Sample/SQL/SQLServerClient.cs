@@ -16,6 +16,7 @@ namespace DataGrid_Sample.SQL
 
         public ObservableCollection<UserEnitity> Get()
         {
+            // 未実装の例外はそのままにしておく
             throw new NotImplementedException();
         }
     }

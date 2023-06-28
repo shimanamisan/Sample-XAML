@@ -32,6 +32,9 @@ namespace DataGrid_Sample
 
         public DelegateCommand<object> ExecuteRowSelectedCommand { get; }
 
+        /// <summary>
+        /// コンストラクタ初期化子
+        /// </summary>
         public MainWindowViewModel(): this(new CSVClient())
         { }
 

@@ -11,10 +11,6 @@ namespace DataGrid_Sample
         public MainWindow()
         {
             InitializeComponent();
-
-            var d = new DataGrid();
-
-            d.ItemsSource
         }
     }
 }
