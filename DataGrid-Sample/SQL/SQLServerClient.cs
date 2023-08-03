@@ -1,7 +1,6 @@
 ﻿using DataGrid_Sample.Enitities;
 using DataGrid_Sample.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace DataGrid_Sample.SQL
@@ -9,6 +8,9 @@ namespace DataGrid_Sample.SQL
     public sealed class SQLServerClient : IDataGridRepository
     {
     
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public SQLServerClient()
         {
             // サーバーに接続する処理など

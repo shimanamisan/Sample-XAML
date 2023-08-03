@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataGrid.Sample.Migrator
+﻿namespace DataGrid.Sample.Migrator
 {
-    internal class CustomMigrationAttribute
+    public sealed class CustomMigrationAttribute
     {
     }
 }

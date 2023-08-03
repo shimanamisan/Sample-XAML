@@ -60,12 +60,12 @@
                     Header="年齢" />
 
                 <DataGridTextColumn
-                    Binding="{Binding BrithDay}"
+                    Binding="{Binding BirthDay}"
                     FontSize="20"
                     Header="誕生日" />
 
                 <DataGridTextColumn
-                    Binding="{Binding Sex}"
+                    Binding="{Binding Gender}"
                     FontSize="20"
                     Header="性別" />
 

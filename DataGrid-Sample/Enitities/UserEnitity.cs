@@ -10,21 +10,27 @@ namespace DataGrid_Sample.Enitities
 
         public int Age { get; }
 
-        public string BrithDay { get; }
+        public string BirthDay { get; }
 
-        public string Sex { get; }
+        public string Gender { get; }
 
         public string Email { get; }
 
         public string Tell { get; }
 
-        public UserEnitity(int id, string name, string age, string brithDay, string sex, string email, string tell)
+        public UserEnitity(int id,
+                           string name,
+                           string age,
+                           string birthDay,
+                           string gender,
+                           string email,
+                           string tell)
         {
             Id = id;
             Name = name;
             Age = Int32.Parse(age);
-            BrithDay = brithDay;
-            Sex = sex;
+            BirthDay = birthDay;
+            Gender = gender;
             Email = email;
             Tell = tell;
         }
