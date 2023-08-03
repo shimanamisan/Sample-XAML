@@ -59,8 +59,8 @@ namespace DataGrid_Sample
                 var displayValue = $"ユーザーID: {entity.Id}\n" +
                                    $"名前: {entity.Name}\n" +
                                    $"年齢: {entity.Age}\n" +
-                                   $"誕生日:  {entity.BrithDay}\n" +
-                                   $"性別: {entity.Sex}\n" +
+                                   $"誕生日:  {entity.BirthDay}\n" +
+                                   $"性別: {entity.Gender}\n" +
                                    $"メールアドレス: {entity.Email}\n" +
                                    $"電話番号: {entity.Tell}";
 

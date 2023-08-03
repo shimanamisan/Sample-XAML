@@ -8,9 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DbResourceCopyPath.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DbResourceCopyPath.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentMigrator" Version="3.3.2" />
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SampleMigrator.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
