@@ -31,31 +31,40 @@ static IServiceProvider CreateServices(string sourcePath)
 /// </summary>
 static void CopySQLiteResource(string sourcePath)
 {
+    // 出力先のフォルダ
+    string destFolderPath = ConfigurationManager.AppSettings.Get("OutputPath");
 
-    // コピー先のパス
-    string destinationFile = Path.Combine(ConfigurationManager.AppSettings.Get("OutputPath"), 
-                                          ConfigurationManager.AppSettings.Get("DBResource"));
+    // ファイル名を含めた出力先のパス
+    string destFilePath = Path.Combine(destFolderPath, ConfigurationManager.AppSettings.Get("DBResource"));
 
     try
     {
+
+        // コピー先のフォルダが存在しなければ作成する
+        if (!File.Exists(destFolderPath))
+        {
+            Directory.CreateDirectory(destFolderPath);
+        }
+
         // コピー元のファイルが存在するか確認
         if (File.Exists(sourcePath))
         {
             // ファイルをコピー
             // 第三引数の true は、目的のファイルが存在する場合に上書きすることを意味する
-            File.Copy(sourcePath, Path.Combine(destinationFile), true);
+            File.Copy(sourcePath, Path.Combine(destFilePath), true);
 
         }
     }
     catch (Exception ex)
     {
-        Console.WriteLine("ファイルが見つかりませんでした。");
+        Console.WriteLine($"コピー時にエラーが発生しました。\n {ex.Message}");
     }
 
 }
 
 // 実行ファイル（.exe）が実行されている直下のフォルダに存在するデータベースファイルのフルパスを取得
-var dataSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SampleMigrator.db");
+var dataSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                              ConfigurationManager.AppSettings.Get("DBResource"));
 
 var serviceProvider = CreateServices(dataSource);
 
@@ -71,10 +80,12 @@ using (var scope = serviceProvider.CreateScope())
     switch (input)
     {
         case "up":
+            // マイグレーションを実行する
             runner.MigrateUp();
             break;
 
         case "down":
+            // ロールバックを実行（バージョンを指定）
             runner.MigrateDown(0);
             break;
 
