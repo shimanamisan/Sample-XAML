@@ -2,7 +2,7 @@
 
 namespace DataGrid.Sample.Migrator
 {
-    [Migration(1)]
+    [CustomMigration(author: "H.Nishihara", branchNumber: 12, year: 2023, month: 7, day: 19, hour: 17, minute: 29)]
     public sealed class UsersTable : Migration
     {
         /// <summary>
@@ -16,8 +16,7 @@ namespace DataGrid.Sample.Migrator
                 // AsInt16 = short
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()
                 // AsString = string
-                .WithColumn("first_name").AsString()
-                .WithColumn("last_name").AsString()
+                .WithColumn("name").AsString()
                 .WithColumn("age").AsInt32()
                 // AsDateTime = System.DateTime
                 .WithColumn("birthday").AsDateTime()
@@ -27,18 +26,26 @@ namespace DataGrid.Sample.Migrator
                 .WithColumn("created_at").AsDateTime()
                 .WithColumn("updated_at").AsDateTime();
 
-            //Insert.IntoTable("users").Row(new
-            //{
-            //    first_name = "John",
-            //    last_name = "Doe",
-            //    age = 30,
-            //    birthday = new DateTime(1993, 2, 15),
-            //    gender = 1, // 例: 1 = 男性, 2 = 女性
-            //    email = "john.doe@example.com",
-            //    phone_number = "123-456-7890",
-            //    created_at = DateTime.Now,
-            //    updated_at = DateTime.Now
-            //});
+            // データをインサートする
+            var entities = CSVClient.GetInsertData();
+
+            if(entities.Count > 0)
+            {
+                foreach (var entity in entities)
+                {
+                    Insert.IntoTable("users").Row(new
+                    {
+                        name = entity[0],
+                        age = entity[1],
+                        birthday = entity[2],
+                        gender = entity[3] == "女" ? 2 : 1,
+                        email = entity[4],
+                        phone_number = entity[5],
+                        created_at = DateTime.Now,
+                        updated_at = DateTime.Now
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -52,14 +59,3 @@ namespace DataGrid.Sample.Migrator
 
     }
 }
-
-
-/*
- CREATE TABLE "products" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-    "name" TEXT NOT NULL,
-    "price" INTEGER NOT NULL,
-    "created_at" DATETIME NOT NULL,
-    "updated_at" DATETIME NOT NULL
-)
- */
